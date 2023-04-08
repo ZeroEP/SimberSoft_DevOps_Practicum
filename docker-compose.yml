@@ -1,0 +1,14 @@
+version: '3.9'
+services:
+  flask:
+    build: .
+    container_name: SimberSoft-test
+    environment:
+      - FLASK_ENV=${FLASK_ENV}
+      - PYTHONUNBUFFERED=${PYTHONUNBUFFERED}                    
+    restart: on-failure
+    volumes:
+      - .:/SimberSoft-test
+    ports:
+      - "5000:${APP_PORT}"
+    command: python ${START_FILE}
